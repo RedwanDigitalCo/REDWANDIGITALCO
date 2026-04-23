@@ -4,6 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Redwan DigitalCo | Marketing Agency</title>
+<meta name="description" content="Redwan DigitalCo is a digital marketing agency offering SEO, social media marketing, WordPress development, Google Ads and more in Bangladesh.">
+<meta name="keywords" content="digital marketing, SEO, social media marketing, WordPress development, Google Ads, Bangladesh, Redwan DigitalCo">
+<meta name="author" content="Redwan DigitalCo">
+<meta property="og:title" content="Redwan DigitalCo | Marketing Agency">
+<meta property="og:description" content="Scale your digital presence with Redwan DigitalCo. Expert SEO, social media, and digital marketing services.">
+<meta property="og:image" content="https://redwansohan55-debug.github.io/REDWANDIGITALCO/favicon.png">
+<meta property="og:url" content="https://redwansohan55-debug.github.io/REDWANDIGITALCO/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Redwan DigitalCo | Marketing Agency">
+<meta name="twitter:description" content="Scale your digital presence with Redwan DigitalCo.">
+<link rel="icon" type="image/png" href="favicon.png">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('oFx3_6naahpCXtZCV');</script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -1314,7 +1328,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2025 Redwan DigitalCo Marketing Agency · All Rights Reserved
+    © 2026 Redwan DigitalCo Marketing Agency · All Rights Reserved
   </div>
 </footer>
 
@@ -1477,19 +1491,51 @@ window.addEventListener('scroll', () => {
 });
 
 /* ── FORM SUBMIT ── */
-function handleSubmit(btn) {
+async function handleSubmit(btn) {
+  const form = btn.closest('.contact-form-wrap');
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const email = form.querySelector('input[type="email"]').value.trim();
+  const service = form.querySelector('select').value;
+  const message = form.querySelector('textarea').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+
   const orig = btn.textContent;
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  setTimeout(() => {
+
+  try {
+    await emailjs.send('service_8b5agjs', 'template_5lv6py9', {
+      from_name: name,
+      from_email: email,
+      service_interested: service || 'Not specified',
+      message: message
+    });
+
     btn.textContent = '✓ Message Sent!';
     btn.style.background = 'linear-gradient(135deg, #00c851, #00e676)';
+    form.querySelector('input[type="text"]').value = '';
+    form.querySelector('input[type="email"]').value = '';
+    form.querySelector('select').value = '';
+    form.querySelector('textarea').value = '';
     setTimeout(() => {
       btn.textContent = orig;
       btn.style.background = '';
       btn.disabled = false;
     }, 3000);
-  }, 1500);
+
+  } catch (e) {
+    btn.textContent = 'Error — Try Again';
+    btn.style.background = 'linear-gradient(135deg, #ff4444, #ff0000)';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }
 }
 
 /* ── SMOOTH ANCHOR ── */
