@@ -9,7 +9,46 @@
 <meta name="author" content="Redwan DigitalCo">
 <meta property="og:title" content="Redwan DigitalCo | Marketing Agency">
 <meta property="og:description" content="Scale your digital presence with Redwan DigitalCo. Expert SEO, social media, and digital marketing services.">
-<meta property="og:image" content="https://redwansohan55-debug.github.io/REDWANDIGITALCO/favicon.png">
+<meta property="og:image" content="https://redwandigitalco.github.io/REDWANDIGITALCO/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MarketingAgency",
+  "name": "Redwan DigitalCo",
+  "url": "https://redwandigitalco.github.io/REDWANDIGITALCO/",
+  "logo": "https://redwandigitalco.github.io/REDWANDIGITALCO/favicon.png",
+  "description": "Redwan DigitalCo is a digital marketing agency offering SEO, social media marketing, WordPress development, Google Ads and more in Bangladesh.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "BD"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+8801886903797",
+    "contactType": "customer service",
+    "availableLanguage": ["English", "Bengali"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/RedwanDigitalCo"
+  ],
+  "serviceArea": {
+    "@type": "Country",
+    "name": "Bangladesh"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Digital Marketing Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO & Keyword Research"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Social Media Marketing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "WordPress Development"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Ads & SEM"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Content Marketing"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "YouTube & Email Marketing"}}
+    ]
+  }
+}
+</script>
 <meta property="og:url" content="https://redwandigitalco.github.io/REDWANDIGITALCO/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -1020,10 +1059,44 @@
 
   @media (max-width: 640px) {
     .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5,8,18,0.98);
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      z-index: 999;
+    }
+    .nav-links.open a { font-size: 1.2rem; }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1000;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .services-grid { grid-template-columns: 1fr; }
     .process-steps { grid-template-columns: 1fr; }
     .services-header { flex-direction: column; align-items: flex-start; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (min-width: 641px) {
+    .hamburger { display: none; }
   }
 </style>
 </head>
@@ -1035,13 +1108,16 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">REDWAN <span>DIGITALCO</span></div>
-  <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">About</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#why" onclick="closeMenu()">About</a></li>
+    <li><a href="#process" onclick="closeMenu()">Process</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Contact</a></li>
   </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1341,6 +1417,20 @@
 </footer>
 
 <script>
+/* ── HAMBURGER MENU ── */
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMenu() {
+  const nav = document.getElementById('navLinks');
+  const btn = document.getElementById('hamburger');
+  nav.classList.remove('open');
+  btn.classList.remove('open');
+}
+
 /* ── PARTICLE / GRID CANVAS ── */
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
