@@ -3,7 +3,7 @@
 <!--
   ╔══════════════════════════════════════════════════════╗
   ║         REDWAN DIGITALCO — XML SITEMAP               ║
-  ║         https://redwandigitalco.github.io/           ║
+  ║         https://redwandigital.com/                   ║
   ║         Generated: 2026-04-27                        ║
   ║         Standard: sitemaps.org protocol 0.9          ║
   ╚══════════════════════════════════════════════════════╝
@@ -23,17 +23,17 @@
        Canonical, OG image, og-image.png declared
   ══════════════════════════════════════════════════ -->
   <url>
-    <loc>https://redwandigitalco.github.io/redwandigitalco/</loc>
+    <loc>https://redwandigital.com/</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://redwandigitalco.github.io/redwandigitalco/og-image.png</image:loc>
+      <image:loc>https://redwandigital.com/og-image.png</image:loc>
       <image:title>Redwan DigitalCo — Digital Marketing Agency Dhaka, Bangladesh</image:title>
       <image:caption>Results-driven digital marketing agency in Dhaka offering SEO, Social Media, Google Ads, WordPress &amp; more.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://redwandigitalco.github.io/redwandigitalco/favicon-512.png</image:loc>
+      <image:loc>https://redwandigital.com/favicon-512.png</image:loc>
       <image:title>Redwan DigitalCo Logo</image:title>
     </image:image>
   </url>
@@ -43,7 +43,7 @@
        9 core service offerings — highest value page after home
   ══════════════════════════════════════════════════ -->
   <url>
-    <loc>https://redwandigitalco.github.io/redwandigitalco/#services</loc>
+    <loc>https://redwandigital.com/#services</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -54,7 +54,7 @@
        Trust signals: 150+ clients, 98% success, 10x ROI
   ══════════════════════════════════════════════════ -->
   <url>
-    <loc>https://redwandigitalco.github.io/redwandigitalco/#why</loc>
+    <loc>https://redwandigital.com/#why</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -65,7 +65,7 @@
        4-step agency process: Strategy, Execute, Optimize, Scale
   ══════════════════════════════════════════════════ -->
   <url>
-    <loc>https://redwandigitalco.github.io/redwandigitalco/#process</loc>
+    <loc>https://redwandigital.com/#process</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -76,7 +76,7 @@
        FAQPage schema — eligible for Google rich snippets
   ══════════════════════════════════════════════════ -->
   <url>
-    <loc>https://redwandigitalco.github.io/redwandigitalco/#faq</loc>
+    <loc>https://redwandigital.com/#faq</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -87,7 +87,7 @@
        WhatsApp, Email, Facebook — key conversion page
   ══════════════════════════════════════════════════ -->
   <url>
-    <loc>https://redwandigitalco.github.io/redwandigitalco/#contact</loc>
+    <loc>https://redwandigital.com/#contact</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>

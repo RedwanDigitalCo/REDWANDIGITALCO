@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://redwandigitalco.github.io/redwandigitalco/sitemap.xml
+Sitemap: https://redwandigital.com/sitemap.xml
