@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Redwan DigitalCo</title>
+  <meta name="description" content="Privacy Policy for Redwan DigitalCo — learn how we collect, use, and protect your personal information." />
+  <link rel="canonical" href="https://redwandigital.com/privacy-policy.html" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:        #050812;
+      --dark2:       #080e1f;
+      --dark3:       #0b1530;
+      --blue:        #1a6fff;
+      --blue-bright: #3d8eff;
+      --accent:      #00d4ff;
+      --white:       #f0f4ff;
+      --grey:        #8a96b0;
+      --border:      rgba(26,111,255,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── nav ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(5,8,18,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.04em; color: var(--white); text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .back-btn {
+      font-family: 'Syne', sans-serif; font-size: 0.875rem; font-weight: 600;
+      color: var(--grey); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.4rem 1rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── hero banner ── */
+    .hero {
+      background: linear-gradient(135deg, var(--dark2), var(--dark3));
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 20px; padding: 0.3rem 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(1.75rem, 5vw, 2.75rem);
+      color: var(--white); margin-bottom: 0.75rem;
+    }
+    .hero p {
+      color: var(--grey); font-size: 0.95rem;
+      max-width: 480px; margin: 0 auto;
+    }
+
+    /* ── layout ── */
+    .page {
+      max-width: 780px; margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── section ── */
+    .section {
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      background: rgba(8,14,31,0.6);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.2s;
+    }
+    .section:hover { border-color: rgba(26,111,255,0.3); }
+
+    .section-num {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .section h2 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .section p {
+      color: var(--grey); font-size: 0.95rem; margin-bottom: 0.75rem;
+    }
+    .section p:last-child { margin-bottom: 0; }
+    .section ul {
+      list-style: none; padding: 0; margin: 0.5rem 0;
+    }
+    .section ul li {
+      color: var(--grey); font-size: 0.95rem;
+      padding: 0.3rem 0 0.3rem 1.4rem;
+      position: relative;
+    }
+    .section ul li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: var(--blue-bright);
+    }
+
+    /* ── contact card ── */
+    .contact-card {
+      margin-top: 1rem;
+      background: rgba(26,111,255,0.06);
+      border: 1px solid rgba(26,111,255,0.2);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+    .contact-card p { color: var(--grey); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .contact-card a {
+      color: var(--accent); text-decoration: none; font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .contact-card a:hover { opacity: 0.8; }
+
+    /* ── divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0.75rem 0 1rem;
+    }
+
+    /* ── footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--grey); font-size: 0.85rem;
+    }
+    footer a { color: var(--blue-bright); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo">Redwan <span>DigitalCo</span></a>
+    <a href="/" class="back-btn">← Back to Home</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-tag">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: April 28, 2026 &nbsp;·&nbsp; Effective immediately</p>
+  </div>
+
+  <main class="page">
+
+    <div class="section">
+      <div class="section-num">01</div>
+      <h2>Introduction</h2>
+      <p>Welcome to Redwan DigitalCo ("we", "our", or "us"). We are a digital marketing agency based in Dhaka, Bangladesh, operating at <strong>redwandigital.com</strong>.</p>
+      <p>This Privacy Policy explains how we collect, use, store, and protect information when you visit our website or contact us for our services. By using our website, you agree to the practices described below.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">02</div>
+      <h2>Information We Collect</h2>
+      <p>We only collect information you voluntarily provide when you reach out to us:</p>
+      <ul>
+        <li>Your name and contact details (email address, phone number)</li>
+        <li>Business information you share when inquiring about services</li>
+        <li>Messages you send via our contact form, WhatsApp, or email</li>
+      </ul>
+      <div class="divider"></div>
+      <p>We also collect limited technical data automatically when you visit our site:</p>
+      <ul>
+        <li>Browser type and device information</li>
+        <li>Pages visited and time spent on site</li>
+        <li>Referring website or search query (via Google Analytics, if enabled)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-num">03</div>
+      <h2>How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Respond to your inquiries and provide our services</li>
+        <li>Send service-related communications (proposals, invoices, updates)</li>
+        <li>Improve our website and marketing materials</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+      <p>We do <strong>not</strong> sell, rent, or trade your personal information to any third party.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">04</div>
+      <h2>Cookies &amp; Tracking</h2>
+      <p>Our website may use cookies and similar technologies to enhance your browsing experience. These include:</p>
+      <ul>
+        <li><strong>Essential cookies</strong> — required for the website to function properly</li>
+        <li><strong>Analytics cookies</strong> — help us understand how visitors use the site (e.g. Google Analytics)</li>
+      </ul>
+      <p>You can disable cookies at any time through your browser settings. Note that some parts of the site may not function correctly if cookies are disabled.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">05</div>
+      <h2>Third-Party Services</h2>
+      <p>We may use trusted third-party services that process data on our behalf, including:</p>
+      <ul>
+        <li><strong>Google Analytics</strong> — website traffic analysis</li>
+        <li><strong>Google Ads</strong> — advertising and remarketing</li>
+        <li><strong>Facebook/Meta Pixel</strong> — social media advertising</li>
+        <li><strong>WhatsApp Business</strong> — customer communication</li>
+      </ul>
+      <p>Each of these services has its own privacy policy. We recommend reviewing them if you have concerns.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">06</div>
+      <h2>Data Retention</h2>
+      <p>We retain your personal data only as long as necessary to provide services and comply with legal obligations. When data is no longer needed, it is securely deleted or anonymized.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">07</div>
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Request access to the personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your data ("right to be forgotten")</li>
+        <li>Withdraw consent for marketing communications at any time</li>
+      </ul>
+      <p>To exercise any of these rights, contact us using the details below.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">08</div>
+      <h2>Security</h2>
+      <p>We take reasonable technical and organizational measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. Our website is served over HTTPS and hosted on a secure platform.</p>
+      <p>However, no method of transmission over the internet is 100% secure. While we strive to protect your data, we cannot guarantee absolute security.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">09</div>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. We encourage you to review this page periodically to stay informed.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-num">10</div>
+      <h2>Contact Us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out:</p>
+      <div class="contact-card">
+        <p><strong style="color:var(--white)">Redwan DigitalCo</strong></p>
+        <p>Dhaka, Bangladesh</p>
+        <p>Website: <a href="https://redwandigital.com">redwandigital.com</a></p>
+        <p>Email: <a href="mailto:redwan.sohan55@gmail.com">redwan.sohan55@gmail.com</a></p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 <a href="/">Redwan DigitalCo</a>. All rights reserved.
+    &nbsp;·&nbsp;
+    <a href="/">Back to Home</a>
+  </footer>
+
+</body>
+</html>
