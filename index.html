@@ -696,6 +696,8 @@ inset: 0;
 background: linear-gradient(135deg, rgba(26,111,255,0.06), transparent);
 opacity: 0;
 transition: opacity 0.4s;
+z-index: 1;
+pointer-events: none;
 }
 .service-card::after {
 content: '';
@@ -743,6 +745,38 @@ margin-bottom: 12px;
 line-height: 1.3;
 }
 .service-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.7; font-weight: 300; }
+/* Featured service cards */
+.service-card.featured {
+border: 1px solid rgba(26,111,255,0.5) !important;
+background: linear-gradient(145deg, rgba(11,21,48,0.95), rgba(8,14,31,0.98)) !important;
+box-shadow: 0 0 40px rgba(26,111,255,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.service-card.featured::after { width: 100% !important; }
+.featured-badge { display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg,var(--blue),var(--accent)); padding:4px 14px; border-radius:30px; font-family:'Syne',sans-serif; font-size:0.62rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; margin-bottom:16px; }
+.service-link {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+margin-top: 24px;
+padding: 11px 24px;
+background: linear-gradient(135deg, var(--blue), var(--accent));
+color: #fff;
+font-family: 'Syne', sans-serif;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+text-decoration: none;
+border-radius: 2px;
+position: relative;
+z-index: 2;
+pointer-events: all;
+cursor: pointer;
+transition: transform 0.3s, box-shadow 0.3s;
+box-shadow: 0 0 20px rgba(26,111,255,0.3);
+}
+.service-link:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(26,111,255,0.55); }
+.service-link::after { content: '→'; }
 /* ── WHY US ── */
 #why {
 background: var(--dark);
@@ -1237,9 +1271,9 @@ transition: all 0.3s;
 <a href="/" class="nav-logo" aria-label="Redwan DigitalCo Home">REDWAN <span>DIGITALCO</span></a>
 <ul class="nav-links" id="navLinks">
 <li><a href="#hero" onclick="closeMenu()">Home</a></li>
-<li><a href="#services" onclick="closeMenu()">Services</a></li>
+<li><a href="seo-services.html" onclick="closeMenu()">SEO Services</a></li>
+<li><a href="social-media-marketing.html" onclick="closeMenu()">Social Media</a></li>
 <li><a href="#why" onclick="closeMenu()">About</a></li>
-<li><a href="#process" onclick="closeMenu()">Process</a></li>
 <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
 <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Contact</a></li>
 </ul>
@@ -1314,11 +1348,13 @@ Active & Accepting Clients
 <h3 class="service-name">Digital Marketing Tools</h3>
 <p class="service-desc">Master Canva, Camtasia, and Filmora to create stunning visual content and professional video productions that captivate audiences.</p>
 </article>
-<article class="service-card reveal">
+<article class="service-card featured reveal">
+<div class="featured-badge">⚡ Dedicated Page</div>
 <div class="service-num">02</div>
 <div class="service-icon" aria-hidden="true">📣</div>
 <h3 class="service-name">Social Media Marketing</h3>
 <p class="service-desc">Social media marketing for small businesses — data-driven campaigns on Facebook, Instagram, LinkedIn & more that build real community and drive conversions for brands in Bangladesh and worldwide.</p>
+<a href="social-media-marketing.html" class="service-link">Learn More</a>
 </article>
 <article class="service-card reveal">
 <div class="service-num">03</div>
@@ -1332,11 +1368,13 @@ Active & Accepting Clients
 <h3 class="service-name">Content Marketing</h3>
 <p class="service-desc">Content marketing strategy for startups and growing brands — blogs, articles, and multimedia assets engineered to attract organic traffic and convert your ideal audience globally.</p>
 </article>
-<article class="service-card reveal">
+<article class="service-card featured reveal">
+<div class="featured-badge">⚡ Dedicated Page</div>
 <div class="service-num">05</div>
 <div class="service-icon" aria-hidden="true">🔍</div>
 <h3 class="service-name">SEO & Keyword Research</h3>
 <p class="service-desc">Affordable SEO services for small businesses — Local SEO in Dhaka, On-Page & Off-Page optimization — we rank your brand organically on Google in Bangladesh and internationally.</p>
+<a href="seo-services.html" class="service-link">Learn More</a>
 </article>
 <article class="service-card reveal">
 <div class="service-num">06</div>
