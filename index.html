@@ -1745,6 +1745,7 @@ service_interested: service || 'Not specified', message
 btn.textContent = '✓ Message Sent!';
 btn.style.background = 'linear-gradient(135deg,#00c851,#00e676)';
 statusEl.textContent = 'Thank you! We\'ll get back to you within 24 hours.';
+gtag('event', 'form_submit', { event_category: 'lead', event_label: service || 'not_specified', value: 1 });
 statusEl.style.color = '#00c851';
 form.querySelector('#contact-name').value = '';
 form.querySelector('#contact-email').value = '';
@@ -1767,14 +1768,125 @@ const target = document.querySelector(a.getAttribute('href'));
 if (target) target.scrollIntoView({ behavior: 'smooth' });
 });
 });
-/* ── GA4 EVENTS ── */
+/* ── GA4 KEY EVENTS ── */
+
+// 1. WhatsApp — floating button
 document.querySelector('.wa-float').addEventListener('click', () => {
-gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'floating_button' });
+  gtag('event', 'whatsapp_click', { event_category: 'lead', event_label: 'floating_button' });
 });
-document.querySelectorAll('.btn-wa').forEach(btn => {
-btn.addEventListener('click', () => {
-gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'hero_cta' });
+
+// 2. WhatsApp — all other buttons (hero, contact section, footer)
+document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const label = btn.classList.contains('wa-float') ? 'floating_button'
+      : btn.classList.contains('btn-wa') ? 'hero_cta'
+      : btn.classList.contains('contact-item') ? 'contact_section'
+      : 'footer';
+    gtag('event', 'whatsapp_click', { event_category: 'lead', event_label: label });
+  });
 });
+
+// 3. Email clicks
+document.querySelectorAll('a[href^="mailto"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const label = btn.classList.contains('contact-item') ? 'contact_section' : 'footer';
+    gtag('event', 'email_click', { event_category: 'lead', event_label: label });
+  });
+});
+
+// 4. Hero "Explore Services" CTA
+const exploreBtn = document.querySelector('a[href="#services"].btn-primary');
+if (exploreBtn) {
+  exploreBtn.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'explore_services' });
+  });
+}
+
+// 5. Hero "Send a Message" CTA
+const sendMsgBtn = document.querySelector('a[href="#contact"].btn-outline');
+if (sendMsgBtn) {
+  sendMsgBtn.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'send_message_hero' });
+  });
+}
+
+// 6. Service page links (SEO + Social Media)
+document.querySelectorAll('.service-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const page = link.href.includes('seo') ? 'seo_services' : 'social_media_marketing';
+    gtag('event', 'service_page_click', { event_category: 'engagement', event_label: page });
+  });
+});
+
+// 7. FAQ opens — track which question
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const question = item.querySelector('.faq-q')?.textContent?.trim() || 'unknown';
+    gtag('event', 'faq_open', { event_category: 'engagement', event_label: question.substring(0, 50) });
+  });
+});
+
+// 8. Scroll depth — 25%, 50%, 75%, 90%
+(function() {
+  const depths = [25, 50, 75, 90];
+  const fired = new Set();
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+    depths.forEach(d => {
+      if (scrolled >= d && !fired.has(d)) {
+        fired.add(d);
+        gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: d + '%', value: d });
+      }
+    });
+  }, { passive: true });
+})();
+
+// 9. Time on page — 30s, 60s, 2min, 5min
+(function() {
+  const milestones = [30000, 60000, 120000, 300000];
+  const labels = ['30_seconds', '1_minute', '2_minutes', '5_minutes'];
+  milestones.forEach((ms, i) => {
+    setTimeout(() => {
+      gtag('event', 'time_on_page', { event_category: 'engagement', event_label: labels[i] });
+    }, ms);
+  });
+})();
+
+// 10. Contact nav CTA click
+const navContactCta = document.querySelector('a[href="#contact"].nav-cta');
+if (navContactCta) {
+  navContactCta.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'nav_contact' });
+  });
+}
+
+// 11. Facebook social link clicks
+document.querySelectorAll('a[href*="facebook.com"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'social_click', { event_category: 'engagement', event_label: 'facebook' });
+  });
+});
+
+// 12. Nav logo click
+const navLogo = document.querySelector('.nav-logo');
+if (navLogo) {
+  navLogo.addEventListener('click', () => {
+    gtag('event', 'nav_click', { event_category: 'navigation', event_label: 'logo' });
+  });
+}
+
+// 13. Nav menu links
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'nav_click', { event_category: 'navigation', event_label: link.textContent.trim() });
+  });
+});
+
+// 14. Footer email social-btn
+document.querySelectorAll('a.social-btn[href^="mailto"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'email_click', { event_category: 'lead', event_label: 'footer_social_btn' });
+  });
 });
 </script>
 </body>

@@ -1001,9 +1001,92 @@ const ctaObserver=new IntersectionObserver(([e])=>{
 },{threshold:0.1});
 ctaObserver.observe(heroEl);
 
-/* GA4 Events */
-document.querySelector('.wa-float').addEventListener('click',()=>{if(typeof gtag!=='undefined')gtag('event','whatsapp_click',{event_category:'engagement',event_label:'floating_button_smm'});});
-document.querySelectorAll('.btn-wa').forEach(btn=>{btn.addEventListener('click',()=>{if(typeof gtag!=='undefined')gtag('event','whatsapp_click',{event_category:'engagement',event_label:'smm_page_cta'});});});
+/* ── GA4 KEY EVENTS — SOCIAL MEDIA PAGE ── */
+
+// 7. "Send a Message" CTA buttons (sticky, hero, bottom section)
+document.querySelectorAll('a[href="index.html#contact"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const label = btn.closest('#sticky-cta') ? 'sticky_send_message'
+      : btn.classList.contains('btn-primary') ? 'send_message_cta'
+      : 'nav_free_audit';
+    gtag('event', 'cta_click', { event_category: 'lead', event_label: label, page: 'social_media' });
+  });
+});
+
+// 8. Nav logo + nav links
+document.querySelectorAll('.nav-links a, .nav-logo').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'nav_click', { event_category: 'navigation', event_label: link.textContent.trim(), page: 'social_media' });
+  });
+});
+
+// 9. Email clicks
+document.querySelectorAll('a[href^="mailto"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'email_click', { event_category: 'lead', event_label: 'footer', page: 'social_media' });
+  });
+});
+
+// 10. WhatsApp — all buttons
+document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const label = btn.classList.contains('wa-float') ? 'floating_button'
+      : btn.closest('#sticky-cta') ? 'sticky_cta'
+      : btn.classList.contains('btn-wa') ? 'smm_page_cta'
+      : btn.classList.contains('btn-outline') ? 'get_quote_outline'
+      : btn.classList.contains('btn-primary') ? 'get_quote_primary'
+      : 'footer_wa';
+    gtag('event', 'whatsapp_click', { event_category: 'lead', event_label: label, page: 'social_media' });
+  });
+});
+
+// 2. Email clicks
+document.querySelectorAll('a[href^="mailto"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'email_click', { event_category: 'lead', event_label: 'footer', page: 'social_media' });
+  });
+});
+
+// 3. Facebook clicks
+document.querySelectorAll('a[href*="facebook.com"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'social_click', { event_category: 'engagement', event_label: 'facebook', page: 'social_media' });
+  });
+});
+
+// 4. FAQ opens
+document.querySelectorAll('.faq-q').forEach(item => {
+  item.addEventListener('click', () => {
+    const question = item.textContent?.trim() || 'unknown';
+    gtag('event', 'faq_open', { event_category: 'engagement', event_label: question.substring(0, 50), page: 'social_media' });
+  });
+});
+
+// 5. Scroll depth
+(function() {
+  const depths = [25, 50, 75, 90];
+  const fired = new Set();
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+    depths.forEach(d => {
+      if (scrolled >= d && !fired.has(d)) {
+        fired.add(d);
+        gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: d + '%', page: 'social_media' });
+      }
+    });
+  }, { passive: true });
+})();
+
+// 6. Time on page
+(function() {
+  const milestones = [30000, 60000, 120000, 300000];
+  const labels = ['30_seconds', '1_minute', '2_minutes', '5_minutes'];
+  milestones.forEach((ms, i) => {
+    setTimeout(() => {
+      gtag('event', 'time_on_page', { event_category: 'engagement', event_label: labels[i], page: 'social_media' });
+    }, ms);
+  });
+})();
 </script>
 </body>
 </html>

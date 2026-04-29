@@ -825,15 +825,96 @@ const ctaObserver = new IntersectionObserver(([e])=>{
 },{threshold:0.1});
 ctaObserver.observe(heroEl);
 
-/* GA4 Events */
-document.querySelector('.wa-float').addEventListener('click',()=>{
-gtag('event','whatsapp_click',{event_category:'engagement',event_label:'floating_button'});
+/* ── GA4 KEY EVENTS — SEO PAGE ── */
+
+// 7. Email click (footer)
+document.querySelectorAll('a[href^="mailto"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'email_click', { event_category: 'lead', event_label: 'footer', page: 'seo_services' });
+  });
 });
-document.querySelectorAll('.btn-wa').forEach(btn=>{
-btn.addEventListener('click',()=>{
-  gtag('event','whatsapp_click',{event_category:'engagement',event_label:'seo_page_cta'});
+
+// 8. "View SEO Services" hero btn-primary
+const viewSeoBtn = document.querySelector('a[href="#seo-services"].btn-primary');
+if (viewSeoBtn) {
+  viewSeoBtn.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'engagement', event_label: 'view_seo_services_hero', page: 'seo_services' });
+  });
+}
+
+// 9. "Send a Message" CTA at bottom of page
+document.querySelectorAll('a[href="index.html#contact"].btn-primary').forEach(btn => {
+  btn.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'lead', event_label: 'send_message_cta', page: 'seo_services' });
+  });
 });
+
+// 10. Nav logo + nav links
+document.querySelectorAll('.nav-links a, .nav-logo').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'nav_click', { event_category: 'navigation', event_label: link.textContent.trim(), page: 'seo_services' });
+  });
 });
+
+// 11. WhatsApp hero btn
+document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const label = btn.classList.contains('wa-float') ? 'floating_button'
+      : btn.closest('#sticky-cta') ? 'sticky_cta'
+      : 'seo_page_cta';
+    gtag('event', 'whatsapp_click', { event_category: 'lead', event_label: label, page: 'seo_services' });
+  });
+});
+
+// 2. "Contact Us" sticky CTA button
+const contactUsBtn = document.querySelector('#sticky-cta .btn-primary');
+if (contactUsBtn) {
+  contactUsBtn.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'lead', event_label: 'sticky_contact_us', page: 'seo_services' });
+  });
+}
+
+// 3. Nav "Get Free Audit" click
+const auditNav = document.querySelector('.nav-cta');
+if (auditNav) {
+  auditNav.addEventListener('click', () => {
+    gtag('event', 'cta_click', { event_category: 'lead', event_label: 'nav_free_audit', page: 'seo_services' });
+  });
+}
+
+// 4. FAQ opens
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const question = item.querySelector('.faq-q')?.textContent?.trim() || 'unknown';
+    gtag('event', 'faq_open', { event_category: 'engagement', event_label: question.substring(0, 50), page: 'seo_services' });
+  });
+});
+
+// 5. Scroll depth
+(function() {
+  const depths = [25, 50, 75, 90];
+  const fired = new Set();
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight * 100;
+    depths.forEach(d => {
+      if (scrolled >= d && !fired.has(d)) {
+        fired.add(d);
+        gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: d + '%', page: 'seo_services' });
+      }
+    });
+  }, { passive: true });
+})();
+
+// 6. Time on page
+(function() {
+  const milestones = [30000, 60000, 120000, 300000];
+  const labels = ['30_seconds', '1_minute', '2_minutes', '5_minutes'];
+  milestones.forEach((ms, i) => {
+    setTimeout(() => {
+      gtag('event', 'time_on_page', { event_category: 'engagement', event_label: labels[i], page: 'seo_services' });
+    }, ms);
+  });
+})();
 </script>
 </body>
 </html>
